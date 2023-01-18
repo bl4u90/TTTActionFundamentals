@@ -3,7 +3,7 @@ name: GitHub Actions Demo
 on:
  push:
    branches: main
-   paths-ignore: .github
+   paths-ignore: [.github/**]
  pull_request:
    branches: main
  schedule:
@@ -18,4 +18,7 @@ jobs:
       - run: echo "${{ github.ref }}"
       - uses: actions/checkout@v3.3.0
       - run: tree
+      - run: echo "${{ toJson(runner) }}"
+      - run: echo "${{ toJson(github) }}"
+      - run: echo "${{ toJson(matrix) }}"
       
